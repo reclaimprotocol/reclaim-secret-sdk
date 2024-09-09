@@ -8,8 +8,11 @@
       "verify": "node verify"
     },
     "keywords": [],
-    "author": "",
-    "license": "ISC",
+    "license": "See License in <https://github.com/reclaimprotocol/.github/blob/main/LICENSE>",
+    "bugs": {
+      "url": "https://github.com/reclaimprotocol/reclaim-secret-sdk/issues"
+    },
+    "homepage": "https://github.com/reclaimprotocol/reclaim-secret-sdk/",
     "dependencies": {
       "dotenv": "^16.4.1",
       "secretjs": "^1.12.4"
