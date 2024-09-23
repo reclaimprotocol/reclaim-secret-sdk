@@ -1,4 +1,8 @@
-# Reclaim - Secret SDK
+<div>
+    <div>
+        <img src="https://raw.githubusercontent.com/reclaimprotocol/.github/main/assets/banners/Secret-SDK.png"  />
+    </div>
+</div>
 
 ## Deployments
 
