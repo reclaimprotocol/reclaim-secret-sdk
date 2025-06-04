@@ -1,21 +1,17 @@
 {
-    "name": "node",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "type": "module",
-    "scripts": {
-      "verify": "node verify"
-    },
-    "keywords": [],
-    "license": "See License in <https://github.com/reclaimprotocol/.github/blob/main/LICENSE>",
-    "bugs": {
-      "url": "https://github.com/reclaimprotocol/reclaim-secret-sdk/issues"
-    },
-    "homepage": "https://github.com/reclaimprotocol/reclaim-secret-sdk/",
-    "dependencies": {
-      "dotenv": "^16.4.1",
-      "secretjs": "^1.12.4"
-    }
+  "name": "node",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "upload.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "secretjs": "^1.15.0"
   }
-  
+}

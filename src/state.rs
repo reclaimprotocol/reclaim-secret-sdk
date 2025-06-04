@@ -1,21 +1,44 @@
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
+use std::u128;
 
-use cosmwasm_std::Storage;
-use cosmwasm_storage::{singleton, singleton_read, ReadonlySingleton, Singleton};
+use secret_toolkit::storage::{Item, Keymap};
 
-pub static CONFIG_KEY: &[u8] = b"config";
+use cosmwasm_std::{Addr, Uint128};
 
-#[derive(Serialize, Deserialize, Clone, Debug, Eq, PartialEq, JsonSchema)]
-pub struct State {
-    pub contract: String,
-    pub code_hash: String,
+pub const EPOCHS: Keymap<u128, Epoch> = Keymap::new("epochs".as_bytes());
+pub const CONFIG: Item<Config> = Item::new("config".as_bytes());
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq)]
+#[serde(rename_all = "snake_case")]
+pub struct Config {
+    pub owner: Addr,
+    pub current_epoch: Uint128,
 }
 
-pub fn config(storage: &mut dyn Storage) -> Singleton<State> {
-    singleton(storage, CONFIG_KEY)
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub struct Witness {
+    pub address: String,
+    pub host: String,
 }
 
-pub fn config_read(storage: &dyn Storage) -> ReadonlySingleton<State> {
-    singleton_read(storage, CONFIG_KEY)
+impl Witness {
+    pub fn get_addresses(witness: Vec<Witness>) -> Vec<String> {
+        let mut vec_addresses = vec![];
+        for wit in witness {
+            vec_addresses.push(wit.address);
+        }
+        return vec_addresses;
+    }
+}
+
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub struct Epoch {
+    pub id: Uint128,
+    pub timestamp_start: u64,
+    pub timestamp_end: u64,
+    pub minimum_witness_for_claim_creation: Uint128,
+    pub witness: Vec<Witness>,
 }
