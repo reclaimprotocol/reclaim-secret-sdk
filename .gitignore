@@ -1,8 +1,3 @@
-# Build results
-/target
-Cargo.lock
-contract.wasm*
-
 # Cargo+Git helper file (https://github.com/rust-lang/cargo/blob/0.44.1/src/cargo/sources/git/utils.rs#L320-L327)
 .cargo-ok
 
@@ -16,8 +11,12 @@ contract.wasm*
 *.iml
 .idea
 
-# node
-/node/node_modules
+# Ignore node_modules and target directories at any level
+**/node_modules/
+**/target/
 
-# env
-.env
+# Ignore specific files at any level
+**/contract.wasm
+**/cargo.lock
+**/.DS_Store
+**/.env
